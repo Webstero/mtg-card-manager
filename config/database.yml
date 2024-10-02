@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: mtg_card_manager_development
+
+test:
+  <<: *default
+  database: mtg_card_manager_test
+
+production:
+  <<: *default
+  database: mtg_card_manager_production
+  username: mtg_card_manager
+  password: <%= ENV["MTG_CARD_MANAGER_DATABASE_PASSWORD"] %>
