@@ -1,0 +1,21 @@
+<% if @cards.present? %>
+  <%= paginate @collection = @cards %>
+
+  <div class="mt-8">
+    <p class="text-gray-300">
+      <%= "#{@cards.total_count} #{"card".pluralize(@cards.total_count)} found that match your criteria" %>
+    </p>
+  </div>
+  <div class="my-8">
+    <div class="grid grid-cols-3 gap-6">
+      <% @cards.each do |card| %>
+        <%= link_to image_tag(card.image_url, title: card.name, alt: card.name, class: "w-full h-auto rounded"), card_path(card, @permitted_params) %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= paginate @collection = @cards %>
+
+<% elsif @permitted_params.present? %>
+  <p class="text-gray-300 text-xl">No cards found... 😞</p>
+<% end %>

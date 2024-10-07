@@ -1,0 +1,22 @@
+<%= form_with(url: root_path, local: true, method: :get, class: "mb-8") do |form| %>
+  <div class="flex items-center space-x-4">
+    <%= form.label "", "Search:", class: "text-lg font-medium text-gray-300" do %>
+      <%= image_tag "mtg_logo.png", title: "mtg_logo", alt: "mtg_logo", class: "inline-block w-48 h-auto" %>
+    <% end %>
+    <%= form.text_field :name, value: params[:name], placeholder: "Search for Magic cards...", class: "border border-gray-700 bg-gray-900 text-gray-200 rounded-lg p-2 w-full" %>
+    <%= form.submit "Search", class: "bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-600" %>
+    <button type="button" onclick="clearFilters()" class="bg-red-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600">
+      Clear
+    </button>
+  </div>
+  
+  <%= render "cards/filters", filters: @filters %>
+<% end %>
+
+<script>
+  function clearFilters() {
+    const url = new URL(window.location.href);
+    url.search = "";
+    window.location.href = url.toString();
+  }
+</script>

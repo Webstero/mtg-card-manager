@@ -1,0 +1,15 @@
+<% if @grouped_cards.present? %>
+  <div class="my-8">
+    <div class="grid grid-cols-3 gap-6">
+      <% @grouped_cards.each do |group| %>
+        <div class="flex flex-col items-center">
+          <%= image_tag(group[:card].image_url, title: group[:card].name, alt: group[:card].name, class: "w-full h-auto rounded") %>
+          <p class="text-white mt-2"><%= group[:card].name %></p>
+          <p class="text-gray-400">Number of cards: <%= group[:count] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p class="text-gray-300 text-xl">This collection does not contain any cards.</p>
+<% end %>
