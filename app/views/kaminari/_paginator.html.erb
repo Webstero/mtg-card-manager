@@ -1,0 +1,9 @@
+<div class="flex justify-between items-center mt-4">
+  <%= link_to_if @collection.prev_page, "Previous", { page: @collection.prev_page, params: @permitted_params&.except(:page)&.to_h }, class: "bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-400" %>
+  
+  <span class="text-gray-300">
+    Page <%= @collection.current_page %> of <%= @collection.total_pages %>
+  </span>
+  
+  <%= link_to_if @collection.next_page, "Next", { page: @collection.next_page, params: @permitted_params&.except(:page)&.to_h }, class: "bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg hover:bg-gray-400" %>
+</div>

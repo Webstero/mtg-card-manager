@@ -1,0 +1,22 @@
+<header class="bg-gray-800 shadow-md rounded-b-xl">
+  <%= image_tag "header.png", title: "header", alt: "header", class: "w-full h-auto" %>
+
+  <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
+    <div class="flex space-x-4">
+      <%= link_to "Home", root_path, class: "#{controller_name == "cards" ? "underline" : "text-white"} hover:text-blue-400 font-semibold" %>
+      <% if user_signed_in? %>
+        <%= link_to "My Collections", card_collections_path, class: "#{controller_name == "card_collections" ? "underline" : "text-white"} hover:text-blue-400 font-semibold" %>
+      <% end %>
+    </div>
+    <div class="flex space-x-4">
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, class: "text-white hover:text-red-400 font-semibold" %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, 
+            class: "#{controller_name == "sessions" ? "underline" : "bg-blue-600"} text-white py-2 px-4 rounded-lg hover:bg-blue-700" %>
+        <%= link_to "Sign Up", new_user_registration_path, 
+            class: "#{controller_name == "registrations" ? "underline" : "bg-gray-500"} text-white py-2 px-4 rounded-lg hover:bg-gray-700" %>
+      <% end %>
+    </div>
+  </nav>
+</header>

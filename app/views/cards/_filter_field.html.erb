@@ -1,0 +1,56 @@
+<div class="mt-4 space-y-2">
+  <details
+    class="filter-details overflow-hidden rounded border border-gray-300 rounded-lg dark:border-gray-600 [&_summary::-webkit-details-marker]:hidden"
+  >
+    <summary
+      class="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition dark:bg-gray-900 dark:text-white"
+    >
+      <span class="text-sm font-medium"><%= title.capitalize %></span>
+
+      <span class="transition group-open:-rotate-180">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-4"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </summary>
+
+    <div class="border-t border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+      <ul class="space-y-1 border-t border-gray-200 p-4 dark:border-gray-700">
+        <% options.each do |option| %>
+          <li>
+            <label for="filter_in_<%= title %>_<%= option[:label] %>" class="inline-flex items-center cursor-pointer gap-2">
+              <input
+                type="checkbox"
+                id="filter_in_<%= title %>_<%= option[:label] %>"
+                name="<%= title %>[]"
+                value="<%= option[:value] %>"
+                <%= "checked" if params[title]&.include?(option[:value]) %>
+                class="size-5 rounded cursor-pointer border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:focus:ring-offset-gray-900"
+              />
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-200">
+                <%= option[:label] %>
+              </span>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<script>
+  document.addEventListener("click", function(event) {
+    document.querySelectorAll(".filter-details").forEach((details) => {
+      if (!details.contains(event.target)) {
+        details.removeAttribute("open");
+      }
+    });
+  });
+</script>

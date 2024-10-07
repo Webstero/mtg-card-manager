@@ -1,0 +1,5 @@
+<div class="grid grid-cols-3 gap-4">
+  <% filters.each do |filter| %>
+    <%= render "cards/filter_field", title: filter, options: send("#{filter}_filter_options") %>
+  <% end %>
+</div>
