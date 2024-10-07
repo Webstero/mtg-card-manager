@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README provides steps to get the application up and running.
 
-Things you may want to cover:
+## MTG Card Manager
 
-* Ruby version
+MTG Card Manager is a Ruby on Rails application for managing a collection of Magic: The Gathering cards, including features for creating custom decks and calculating card prices.
 
-* System dependencies
+## Ruby version
+Make sure you are using Ruby version **3.1.0** or higher.
 
-* Configuration
+## System dependencies
+Ensure that you have the following dependencies installed:
 
-* Database creation
+- Rails 7.2.1
+- PostgreSQL
+- Puma
+- Tailwind CSS
+- Devise
+- Kaminari
 
-* Database initialization
+## Configuration
+To set up the application, follow these steps:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. **Clone the repository:**
+  ```
+  bash
+  git clone https://github.com/Webstero/mtg-card-manager.git
+  cd mtg-card-manager
+  ```
+2. **Install required gems:**
+  ```
+  bundle install
+  ```
+3. **Create the database:**
+  ```
+  rails db:create
+  ```
+4. **Download the all_printings.psql file:**
+Visit https://mtgjson.com/downloads/all-files/ and place the downloaded file in the db/ directory.
+5. **Run migrations:**
+  ```
+  rails db:migrate
+  ```
+6. **Start the Rails server:**
+  ```
+  rails s
+  ```
