@@ -37,7 +37,10 @@ To set up the application, follow these steps:
   rails db:create
   ```
 4. **Download the all_printings.psql file:**
-Visit https://mtgjson.com/downloads/all-files/ and place the downloaded file in the db/ directory.
+
+Visit https://mtgjson.com/downloads/all-files/ and place the downloaded file in the `db/` directory.
+After cloning the project, run the Rake task to load the data: `rails db:load_mtg_data`. This should be done before migrating the database.
+
 5. **Run migrations:**
   ```
   rails db:migrate
@@ -45,4 +48,8 @@ Visit https://mtgjson.com/downloads/all-files/ and place the downloaded file in 
 6. **Start the Rails server:**
   ```
   rails s
+  ```
+7. **Run tests:**
+  ```
+  rspec spec/.
   ```
