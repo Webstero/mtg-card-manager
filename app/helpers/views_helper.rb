@@ -1,6 +1,6 @@
 module ViewsHelper
   def colors_filter_options
-    colors = ::Mtg::Config.colors
+    colors = ::Mtg::Config::COLORS
 
     colors.map do |color|
       { label: color, value: color == "Blue" ? "U" : color[0] }
@@ -16,7 +16,7 @@ module ViewsHelper
   end
 
   def rarities_filter_options
-    rarities = ::Mtg::Config.rarities
+    rarities = ::Mtg::Config::RARITIES
 
     rarities.map do |rarity|
       { label: rarity, value: rarity }
