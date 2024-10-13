@@ -3,7 +3,6 @@ RSpec.describe ::Mtg::Models::Card, type: :model do
     availability
     border_color
     colors
-    face_converted_mana_cost
     frame_version
     has_foil
     has_non_foil
