@@ -22,8 +22,8 @@ jobs:
         ruby-version: .ruby-version
         bundler-cache: true
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+    - name: Scan for common Rails security vulnerabilities using static analysis
+      run: bin/brakeman --no-pager
 
   scan_js:
     runs-on: ubuntu-latest
@@ -54,7 +54,12 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: |
+          bin/rubocop -f github
+          if [ $? -ne 0 ]; then
+            echo "RuboCop failed. Please fix the issues."
+            exit 1
+          fi
 
   test:
     runs-on: ubuntu-latest
@@ -69,12 +74,6 @@ jobs:
           - 5432:5432
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
-      # redis:
-      #   image: redis
-      #   ports:
-      #     - 6379:6379
-      #   options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client
@@ -88,11 +87,13 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Run RSpec tests
+        run: bin/rspec --fail-fast || (echo "RSpec tests failed"; exit 1)
+
       - name: Run tests
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
-          # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test test:system
 
       - name: Keep screenshots from failed system tests

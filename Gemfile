@@ -14,6 +14,8 @@ gem "tailwindcss-rails", "~> 2.7"
 gem "kaminari", "~> 1.2"
 gem "devise", "~> 4.9"
 gem "faker", "~> 3.2"
+gem "jquery-rails", "~> 4.6"
+
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -32,6 +34,7 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec-rails", "6.1.3"
   gem "shoulda-matchers", "~> 6.2"
-  gem "database_cleaner"
-  gem "factory_bot_rails"
+  gem "database_cleaner", "~> 2.0"
+  gem "factory_bot_rails", "~> 6.4"
+  gem "rails-controller-testing", "~> 1.0"
 end
