@@ -28,7 +28,7 @@ RSpec.describe CardsController, type: :controller do
         mock_simple_filter(card)
 
         get :index, params: { name: card.name }
-      
+
         expect(response).to render_template(:index)
       end
     end
@@ -67,7 +67,7 @@ RSpec.describe CardsController, type: :controller do
       it "raises an ActiveRecord::RecordNotFound error" do
         action = -> { get :show, params: { id: -1 } }
 
-        expect { action.call }.to raise_error(ActiveRecord::RecordNotFound)      
+        expect { action.call }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

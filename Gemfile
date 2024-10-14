@@ -22,17 +22,17 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rubocop", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "rspec-rails", "6.1.3"
 end
 
 group :development do
   gem "web-console"
-  gem "error_highlight", "0.6.0"
+  gem "error_highlight", "0.3.0"
 end
 
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
-  gem "rspec-rails", "6.1.3"
   gem "shoulda-matchers", "~> 6.2"
   gem "database_cleaner", "~> 2.0"
   gem "factory_bot_rails", "~> 6.4"
