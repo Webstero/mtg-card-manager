@@ -3,8 +3,13 @@ class CardsController < ApplicationController
 
   def index
     @permitted_params = index_params.to_h
-    @filters = ::Mtg::Models::Card::SIMPLE_FILTERS
+    @filters = ::Mtg::Config::SIMPLE_FILTERS
     @cards = @permitted_params.present? ? fetch_filtered_cards(@permitted_params) : []
+
+    respond_to do |format|
+      format.html
+      format.js { render partial: "cards/cards_list", locals: { cards: @cards }, layout: false }
+    end
   end
 
   def show

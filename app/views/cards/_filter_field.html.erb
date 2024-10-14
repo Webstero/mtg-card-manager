@@ -31,6 +31,7 @@
                 id="filter_in_<%= title %>_<%= option[:label] %>"
                 name="<%= title %>[]"
                 value="<%= option[:value] %>"
+                data-action="change->search#updateForm"
                 <%= "checked" if params[title]&.include?(option[:value]) %>
                 class="size-5 rounded cursor-pointer border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:focus:ring-offset-gray-900"
               />
@@ -46,11 +47,13 @@
 </div>
 
 <script>
-  document.addEventListener("click", function(event) {
-    document.querySelectorAll(".filter-details").forEach((details) => {
-      if (!details.contains(event.target)) {
-        details.removeAttribute("open");
-      }
+  $(document).ready(function() {
+    $(document).on("click", function(event) {
+      $(".filter-details").each(function() {
+        if (!$(this).is(event.target)) {
+          $(this).removeAttr("open");
+        }
+      });
     });
   });
 </script>

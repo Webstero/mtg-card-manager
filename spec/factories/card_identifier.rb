@@ -12,8 +12,6 @@ FactoryBot.define do
     scryfall_illustration_id { SecureRandom.uuid }
     scryfall_oracle_id { SecureRandom.uuid }
     tcgplayer_product_id { SecureRandom.uuid }
-    uuid { SecureRandom.uuid }
-
-    card
+    uuid { SecureRandom.uuid  }
   end
 end

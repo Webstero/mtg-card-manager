@@ -4,7 +4,7 @@ FactoryBot.define do
     availability { "mtgo, paper" }
     border_color { "black" }
     colors { "R, W" }
-    converted_mana_cost { "{1}{R}{W}" }
+    mana_cost { "{1}{R}{W}" }
     frame_version { "2015" }
     has_foil { true }
     has_non_foil { true }
@@ -15,7 +15,9 @@ FactoryBot.define do
     number { "391" }
     rarity { "uncommon" }
     set_code { "ZNR" }
+    uuid { SecureRandom.uuid }
 
-    card_identifier
+    association :set, factory: :mtg_set
+    association :card_identifier, factory: :card_identifier, strategy: :build
   end
 end

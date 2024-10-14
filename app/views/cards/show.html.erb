@@ -8,7 +8,10 @@
       <p><strong>Set:</strong> <%= @card.set_code %></p>
       <p><strong>Type:</strong> <%= @card.type %></p>
       <p><strong>Rarity:</strong> <%= @card.rarity %></p>
-      <p><strong>Text:</strong> <%= @card.text %></p>
+      <p>
+        <strong>Text:</strong> 
+        <span id="text-container"> <%= @card.text %> </span>
+      </p>
     </div>
 
     <% if user_signed_in? && current_user.card_collections.any? %>
@@ -21,3 +24,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+      var text = $("#text-container").text();
+
+      text = text.replace(/\\n/g, "<br>");
+      $("#text-container").html(text);
+  });
+</script>
