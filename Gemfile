@@ -13,7 +13,7 @@ gem "bootsnap", require: false
 gem "tailwindcss-rails", "~> 2.7"
 gem "kaminari", "~> 1.2"
 gem "devise", "~> 4.9"
-gem "faker", "~> 3.2"
+gem "faker", "~> 3.5"
 gem "jquery-rails", "~> 4.6"
 
 
