@@ -10,7 +10,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
-gem "tailwindcss-rails", "~> 2.7"
+gem "tailwindcss-rails", "~> 3.1"
 gem "kaminari", "~> 1.2"
 gem "devise", "~> 4.9"
 gem "faker", "~> 3.2"
